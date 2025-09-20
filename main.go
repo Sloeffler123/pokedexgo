@@ -3,11 +3,21 @@ package main
 import (
 	"fmt"
 	"strings"
+	"bufio"
+	"os"
 )
 
 func main() {
-	fmt.Println("Hello World")
-	
+	for {
+		fmt.Print("Pokedex > ")
+		userInput := bufio.NewScanner(os.Stdin)
+		userInput.Scan()
+		textUserInput := userInput.Text()
+		textToLowed := strings.ToLower(textUserInput)
+		cleanTextUserInput := strings.Fields(textToLowed)
+		fmt.Println("Your command was:", cleanTextUserInput[0])
+		
+	}
 }
 
 func cleanInput(text string) []string {
