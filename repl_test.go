@@ -2,9 +2,48 @@ package main
 
 import (
 	"testing"
-	
+	"fmt"
 )
 
+func TestPokeDexCli(t *testing.T,) {
+	cases := []struct {
+		input string
+		expected string
+	}{
+		{
+			input: "help",
+			expected: "Display a help message",
+		},
+		{
+			input: "exit",
+			expected: "Exit the Pokedex",
+		},
+		{
+			input: "Help me",
+			expected: "Display a help message",
+		},
+		{
+			input: "Exit",
+			expected: "Exit the Pokedex",
+		},
+		{
+			input: "",
+			expected: "Unknown command",
+		},
+	}
+	for _, c := range cases {
+		if c.input == "" {
+			fmt.Println("Unknown command")
+			continue
+		}
+		cleanText := cleanInput(c.input)
+		oneWord := cleanText[0]
+		if cliCommands()[oneWord].description != c.expected {
+			t.Errorf("texts dont match")
+			t.Fail()
+		}
+	}
+}
 
 func TestCleanInput(t *testing.T) {
 	cases := []struct {
