@@ -73,3 +73,7 @@ func commandHelp() error {
 	fmt.Println("exit: Exit the Pokedex")
 	return nil
 }
+
+// func commandMap() error {
+
+// }
